@@ -7,7 +7,7 @@ async function bootstrap() {
   setupPipes(app);
   app.enableCors({
     credentials: true,
-    origin: "http://localhost:8080",
+    origin: ["http://localhost:8080", "http://localhost:8081"],
   });
   await app.listen(3000);
 }
