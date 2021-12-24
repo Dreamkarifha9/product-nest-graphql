@@ -70,7 +70,7 @@ export class CategoryService {
 
   async removeOne(CategoryId: number): Promise<Category> {
     // ค้นหาก่อนที่จะลบ ตรวจสอบว่ามีข้อมูลจริงไหม
-    const FindCategoryId_ = await this.categoryRepository.findOne(CategoryId);
+    const FindCategoryId_ = await this.categoryRepository.findOne({ where: [{ id: CategoryId }] });
     if (!FindCategoryId_) {
       this.logger.error(`เกิดข้อผิดพลาด ไม่พบข้อมูลสินค้าที่ต้องการที่จะลบ ${CategoryId}`);
       throw new EntityNotFoundException(CategoryId, Category);

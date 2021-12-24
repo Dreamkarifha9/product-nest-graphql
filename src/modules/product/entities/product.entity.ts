@@ -23,7 +23,9 @@ export class Product {
   categoryId: number;
 
   //#region Relations
-  @ManyToOne(() => Category, category => category.products)
+  @ManyToOne(() => Category, category => category.products, {
+    onDelete: "CASCADE",
+  })
   categorys!: Category;
   //#endregion
 }
